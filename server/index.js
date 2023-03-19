@@ -21,8 +21,8 @@ app.post('/submitToNotion', jsonParser, async(req,res)=>{
     const name = req.body.name;
     const description = req.body.description;
     const tag = req.body.tag
-    console.log(name)
-    console.log(req.body)
+    // console.log(name)
+    // console.log(req.body)
     try {
         const response = await notion.pages.create({
             parent: {database_id:dataBaseId},
@@ -55,7 +55,7 @@ app.post('/submitToNotion', jsonParser, async(req,res)=>{
 
             }
         })
-        console.log(response);
+        // console.log(response);
         console.log("SUCCESS!")
         
     } catch (error) {
