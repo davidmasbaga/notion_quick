@@ -8,7 +8,7 @@ export default function Home() {
   const [description, setDescription]=useState("")
   const [tag, setTag]=useState("")
   const [submitStatus, setSubmitStatus] = useState("")
-  const [reload, setReload] = useState(false)
+  
 
   useEffect(() => {
     if (submitStatus === "success") {
@@ -70,7 +70,7 @@ export default function Home() {
     <input type="text" placeholder="Tag" className="bg-primary-content input max-w-xs w-full font-sans text-l mb-6" onChange={(e)=>setTag(e.target.value)}/>
         {
       submitStatus === "success" ? (<button className="btn loading  btn-success  px-10 w-80 gap-2 ">
-      ¡Enviando!
+      Enviando
     </button>)
      : submitStatus === "error" ?(<button className="btn btn-error  px-10 w-80 gap-2 " onClick={submitToNotion}>Send To Notion </button>)
     :  (<button className="btn btn-primary  px-10 w-80 gap-2 " onClick={submitToNotion}>Send To Notion </button>)
@@ -78,7 +78,7 @@ export default function Home() {
 
 
     {
-      submitStatus === "success" ? (<div className="badge badge-accent">Enviado</div>) : submitStatus === "error" ?(<div className="badge badge-error gap-2">
+      submitStatus === "success" ? (<div className="badge badge-accent">¡Tarea Guardada!</div>) : submitStatus === "error" ?(<div className="badge badge-error gap-2">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-4 h-4 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
       error
     </div>):  (null)

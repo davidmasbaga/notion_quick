@@ -5,7 +5,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 let jsonParser = bodyParser.json()
 const {Client} = require('@notionhq/client');
-const { json } = require("body-parser");
+// const { json } = require("body-parser");
 
 
 const port = process.env.PORT
@@ -21,8 +21,7 @@ app.post('/submitToNotion', jsonParser, async(req,res)=>{
     const name = req.body.name;
     const description = req.body.description;
     const tag = req.body.tag
-    // console.log(name)
-    // console.log(req.body)
+    
     try {
         const response = await notion.pages.create({
             parent: {database_id:dataBaseId},
