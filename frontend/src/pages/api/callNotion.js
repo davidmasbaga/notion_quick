@@ -1,23 +1,15 @@
-require("dotenv").config();
-const express = require('express')
-const app = express()
-const cors = require("cors");
-const bodyParser = require("body-parser");
-let jsonParser = bodyParser.json()
 const {Client} = require('@notionhq/client');
+import {getSession} from 'next-auth/react'
 // const { json } = require("body-parser");
-
-
-const port = process.env.PORT
 
 const notion = new Client({auth:process.env.NOTION_API_KEY})
 const dataBaseId = process.env.NOTION_DATABASE_ID
 
 
+const callNotion = async(req,res)=>{
+    const session = await getSession()
+    console.log(session)
 
-
-
-app.post('/submitToNotion', jsonParser, async(req,res)=>{
     const name = req.body.name;
     const description = req.body.description;
     const tag = req.body.tag
@@ -61,16 +53,8 @@ app.post('/submitToNotion', jsonParser, async(req,res)=>{
         console.log(error)
         
     }
-})
+}
 
 
+export default callNotion
 
-app.use(cors());
-
-
-
-
-
-const server = app.listen(port, () => {
-    console.log(`Server is up and running at port ${port} ⚡`);
-  });
